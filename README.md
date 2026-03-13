@@ -14,7 +14,7 @@ This project aimed to build a realistic hotel network environment in Cisco Packe
 
 ### Tools Used
 
-- **Cisco Packet Tracer 8.x** — Network simulation and device configuration environment
+- **Cisco Packet Tracer** — Network simulation and device configuration environment
 
 ## Network Architecture
 
