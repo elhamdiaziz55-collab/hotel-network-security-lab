@@ -1,4 +1,4 @@
-# 🏨 Hotel Network Security Lab
+#  Hotel Network Security Lab
 
 ## Objective
 
@@ -76,16 +76,11 @@ interface vlan 10
 exit
 ip default-gateway 192.168.1.1
 ```
-
-*Ref 2: Syslog server interface showing the service enabled and logs being received from network devices*
-
 ---
 
 ### Step 3 — Harden SSH v2 on All Routers
 
 Configured SSH v2 on all three routers to replace Telnet. Generated RSA 2048-bit keys, set authentication limits, and enabled login attempt logging. All VTY lines were restricted to SSH only.
-
-*Ref 3: SSH configuration on F1-Router showing SSHv2 enabled, RSA keys generated, and VTY lines restricted to SSH only*
 
 ---
 
@@ -102,8 +97,6 @@ interface FastEthernet0/1
   switchport port-security violation restrict
 exit
 ```
-
-*Ref 4: Port security configuration on F3-Switch showing sticky MAC addresses learned on active ports*
 
 ---
 
@@ -142,13 +135,3 @@ Opened the Syslog server interface and reviewed all collected log messages. Iden
 *Mar 02, 15:38:24.3838: %PORT_SECURITY-2-PSECURE_VIOLATION: Security violation occurred,
   caused by MAC address 0003.E479.BACB on port FastEthernet0/4.
 ```
-
-**Key observations:**
-- The 3-second gap between port going down (15:37:41) and coming back up (15:37:44) indicates a physical device swap
-- Severity level **2 (Critical)** on the port security messages confirms this is a high-priority alert
-- The violation repeating every 10 seconds confirms the device remained connected — the port was not shut down (restrict mode)
-- In a real SOC environment, this sequence would trigger an immediate investigation ticket
-
-*Ref 6: Syslog server displaying collected logs including the port security violation messages with timestamps*
-
----
