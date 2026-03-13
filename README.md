@@ -44,7 +44,7 @@ This project aimed to build a realistic hotel network environment in Cisco Packe
 
 Designed and built the full hotel network in Cisco Packet Tracer: 3 floors, 3 routers, 3 switches, 8 VLANs, and all end devices (PCs, printers, laptops, tablets, access points). Connected routers with point-to-point WAN links and configured inter-VLAN routing on each floor.
 
-*Ref 1: Full network topology showing all 3 floors, routers, switches, VLANs, and the Syslog server connected to F3-Switch in VLAN 10*
+*Ref 1: Full network topology showing all 3 floors, routers, switches, VLANs, and the Syslog server connected to F3-Switch in VLAN 10 (topology.png)*
 
 ---
 
@@ -84,22 +84,6 @@ ip default-gateway 192.168.1.1
 ### Step 3 — Harden SSH v2 on All Routers
 
 Configured SSH v2 on all three routers to replace Telnet. Generated RSA 2048-bit keys, set authentication limits, and enabled login attempt logging. All VTY lines were restricted to SSH only.
-
-```bash
-ip domain-name hotellab.local
-crypto key generate rsa modulus 2048
-ip ssh version 2
-ip ssh authentication-retries 3
-ip ssh time-out 60
-username admin privilege 15 secret StrongPass123!
-login on-success log
-login on-failure log every 1
-line vty 0 4
-  transport input ssh
-  login local
-  exec-timeout 5 0
-exit
-```
 
 *Ref 3: SSH configuration on F1-Router showing SSHv2 enabled, RSA keys generated, and VTY lines restricted to SSH only*
 
@@ -168,12 +152,3 @@ Opened the Syslog server interface and reviewed all collected log messages. Iden
 *Ref 6: Syslog server displaying collected logs including the port security violation messages with timestamps*
 
 ---
-
-## Summary
-
-| Security Control | Configured | Logs Generated | Outcome |
-|-----------------|-----------|----------------|---------|
-| SSH v2 Hardening | ✅ All 3 routers | Login success / failure events | Remote access secured |
-| Syslog Server | ✅ 192.168.1.100 | All device events centralized | Full network visibility |
-| Port Security | ✅ All switches | `%PORT_SECURITY-2-PSECURE_VIOLATION` | Unauthorized device detected & blocked |
-| Interface Monitoring | ✅ Automatic | `%LINK-3-UPDOWN` / `%LINEPROTO-5-UPDOWN` | Physical events logged |
