@@ -44,7 +44,7 @@ This project aimed to build a realistic hotel network environment in Cisco Packe
 
 Designed and built the full hotel network in Cisco Packet Tracer: 3 floors, 3 routers, 3 switches, 8 VLANs, and all end devices (PCs, printers, laptops, tablets, access points). Connected routers with point-to-point WAN links and configured inter-VLAN routing on each floor.
 
-*Ref 1: Full network topology showing all 3 floors, routers, switches, VLANs, and the Syslog server connected to F3-Switch in VLAN 10 (topology.png)*
+*Ref : Full network topology showing all 3 floors, routers, switches, VLANs, and the Syslog server connected to F3-Switch in VLAN 10 (topology.png)*
 
 ---
 
@@ -113,7 +113,7 @@ To generate real security logs, an unauthorized device was connected to a port t
 | 15:38:04 | `%PORT_SECURITY-2-PSECURE_VIOLATION` | Switch rejected the unknown MAC |
 | 15:38:14 → 15:39:04 | Violation repeated ×6 | Device remained connected, blocked every 10 seconds |
 
-*Ref 5: Switch CLI showing the port security violation log messages appearing in real time*
+
 
 ---
 
